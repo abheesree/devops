@@ -11,7 +11,7 @@ pipeline {
     stage('Build WAR file') {
       when {
         // Don't build the WAR file if it already exists
-        expression { sh('ls target/my-app.war').trim().isEmpty() }
+        expression { sh('ls target/myweb-8.2.0.war').trim().isEmpty() }
       }
 
       steps {
@@ -23,7 +23,7 @@ pipeline {
     stage('Deploy WAR file to Nexus') {
       steps {
         // Upload the WAR file to Nexus
-        nexusArtifactUploader artifacts: 'target/my-app.war',
+        nexusArtifactUploader artifacts: 'target/myweb-8.2.0.war',
           nexusUrl: 'http://localhost:8081/nexus',
           repository: 'my-repository'
       }
