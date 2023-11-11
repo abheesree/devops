@@ -27,7 +27,6 @@
 		    <id>nexusRepo</id>
 		    <url>http://34.245.222.26:8081/repository/sample-snapshot/</url>
 	    </snapshotRepository>
-
 		<repository>
 		    <id>nexusRepo</id>
 		    <url>http://34.245.222.26:8081/repository/sample-release/</url>
