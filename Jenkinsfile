@@ -9,6 +9,10 @@ pipeline {
     }
 
     stage('Build WAR file') {
+      tools { 
+        maven 'mvn' 
+        //jdk 'JAVA_HOME' 
+      }
       when {
         // Don't build the WAR file if it already exists
 	      expression { true }
