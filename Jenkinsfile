@@ -18,7 +18,8 @@ pipeline {
       when {
         // Don't build the WAR file if it already exists
 	      // expression { sh(script: 'ls /var/lib/jenkins/workspace/pipe1/target/myweb-8.2.0.war', returnStatus: true) == 0  }
-        return fileExists('/var/lib/jenkins/workspace/pipe1/target/myweb-8.2.0.war')
+       def rpmExists = fileExists('/var/lib/jenkins/workspace/pipe1/target/myweb-8.2.0.war')
+        return rpmExists
       }
       steps {
         // Build the WAR file
