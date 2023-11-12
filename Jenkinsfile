@@ -4,6 +4,10 @@ pipeline {
   tools {
           maven 'mvn'
       }
+      environment {
+        // Extract the Git repository name from the full branch reference
+        GIT_REPO_NAME = sh(script: 'echo ${GIT_BRANCH} | cut -d / -f 2', returnStdout: true).trim()
+    }
   stages {
     stage('Checkout') {
       steps {
@@ -11,13 +15,14 @@ pipeline {
       }
     }
     stage('Build WAR file') {
-      when {
-        // Don't build the WAR file if it already exists
-        expression { sh(script: 'ls target/myweb-8.2.0.war', returnStatus: true) == 0 && sh(script: 'ls target/myweb-8.2.0.war', returnStdout: true).trim().isEmpty() }
-            }      // }
+      // when {
+      //   // Don't build the WAR file if it already exists
+      //   expression { sh(script: 'ls target/myweb-8.2.0.war', returnStatus: true) == 0 && sh(script: 'ls target/myweb-8.2.0.war', returnStdout: true).trim().isEmpty() }
+      //       }      // }
 
       steps {
         // Build the WAR file
+        echo "Git Repository Name: ${GIT_REPO_NAME}"
         sh 'mvn clean package'
       }
     }
