@@ -15,10 +15,10 @@ tools {
       //   // Don't build the WAR file if it already exists
       //   expression { sh(script: 'ls target/myweb-8.2.0.war', returnStatus: true) == 0 && sh(script: 'ls target/myweb-8.2.0.war', returnStdout: true).trim().isEmpty() }
       // }
-      when {
-        // Don't build the WAR file if it already exists
-        expression { sh(script: 'ls target/myweb-8.2.0.war', returnStatus: true) == 0 && sh(script: 'ls target/myweb-8.2.0.war', returnStdout: true).trim().isEmpty() }
-       }
+      // when {
+      //   // Don't build the WAR file if it already exists
+      //   expression { sh(script: 'ls target/myweb-8.2.0.war', returnStatus: true) == 0 && sh(script: 'ls target/myweb-8.2.0.war', returnStdout: true).trim().isEmpty() }
+      //  }
 
       steps {
         // Build the WAR file
