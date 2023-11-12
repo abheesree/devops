@@ -19,7 +19,6 @@ pipeline {
         sh 'mvn clean package'
       }
     }
-
     stage('Deploy WAR file to Nexus') {
       steps {
         // Upload the WAR file to Nexus
