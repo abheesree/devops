@@ -22,6 +22,7 @@ pipeline {
 
       steps {
         // Build the WAR file
+        cho ${GIT_BRANCH}
         echo "Git Repository Name: ${GIT_REPO_NAME}"
         sh 'mvn clean package'
       }
