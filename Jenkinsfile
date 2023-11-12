@@ -12,7 +12,6 @@ pipeline {
         // Don't build the WAR file if it already exists
         expression { sh('ls target/my-app.war').trim().isEmpty() }
       }
-
       steps {
         // Build the WAR file
         sh 'mvn clean package'
