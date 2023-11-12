@@ -24,7 +24,7 @@ pipeline {
       when {
             expression {
                 // Only build when the repository name is "myProject"
-                return GIT_REPO_NAME == 'devops2'
+                return GIT_REPO_NAME == 'devops'
             }
             }
 
