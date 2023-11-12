@@ -7,7 +7,6 @@ pipeline {
         checkout scm
       }
     }
-
     stage('Build WAR file') {
       when {
         // Don't build the WAR file if it already exists
