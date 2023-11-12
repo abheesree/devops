@@ -16,14 +16,13 @@ pipeline {
       }
       when {
         // Don't build the WAR file if it already exists
-	      expression { sh(script: 'ls /var/lib/jenkins/workspace/pipe1/target/myweb-8.2.0.war', returnStatus: true) == 0  }
-      //  def rpmExists = fileExists('/var/lib/jenkins/workspace/pipe1/target/myweb-8.2.0.war')
+      expression { sh(script: 'ls target/myweb-8.2.0.war', returnStatus: true) == 0 && sh(script: 'ls target/myweb-8.2.0.war', returnStdout: true).trim().isEmpty() }      //  def rpmExists = fileExists('/var/lib/jenkins/workspace/pipe1/target/myweb-8.2.0.war')
       //   return rpmExists
       }
       steps {
         // Build the WAR file
-        echo "in steps"
-        echo determineRepoName()
+        //echo "in steps"
+        //echo determineRepoName()
         sh 'mvn clean package'
       }
     }
