@@ -23,6 +23,8 @@ pipeline {
       }
       steps {
         // Build the WAR file
+        echo "in steps"
+        echo determineRepoName()
         sh 'mvn clean package'
       }
     }
@@ -34,6 +36,9 @@ pipeline {
           nexusUrl: 'http://localhost:8081/nexus',
           repository: 'my-repository'
       }
+    }
+    String determineRepoName() {
+      return scm.getUserRemoteConfigs()[0].getUrl().tokenize('/').last().split("\\.")[0]
     }
   }
 }
